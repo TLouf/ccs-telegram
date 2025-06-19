@@ -105,16 +105,21 @@ Not exactly!
 
 == Scope
 
-Is the network of Telegram channels anything like a social network?
+#v(1fr)
+#text(fa-users-rectangle(), size: 32pt, baseline: 6pt) Is the network of Telegram channels anything like a social network?
 
-What are the main mechanisms giving rise to it?
+#text(fa-cogs(), size: 32pt, baseline: 6pt) What are the main mechanisms giving rise to it?
 
-Analysis of the Telegram network from the Pushshift dataset @BaumgartnerPushshiftTelegram2020
+#v(1fr)
+#fa-arrow-right() Analysis of the Telegram network using the Pushshift dataset @BaumgartnerPushshiftTelegram2020
 
+#fa-arrow-right() Model that reproduces its _topological_ and _temporal_ features
+
+#v(1fr)
 
 = Structural analysis
 
-== A network of information flow?
+== A network of information flow
 
 - Nodes: #num(29609) channels
 - Edge from B to A when A forwards a message from B #fa-arrow-right() #num(501897) directed edges
@@ -127,11 +132,15 @@ Analysis of the Telegram network from the Pushshift dataset @BaumgartnerPushshif
 
 #slide(setting: align.with(center + horizon))[
 
-  #image("figs/lang_assort.png", width: 90%)
+  Ties formed preferably with same language...
+  #v(1fr)
+  #image("figs/lang_assort.png", width: 85%)
 
 ][
-  a
-  #image("figs/communities_3_group_top_11_u.png", width: 90%)
+  ...also reflected in community partition (SBM)
+  #v(1fr)
+  #image("figs/communities_3_group_top_11_u_cropped.png", width: 100%)
+  #v(1fr)
 ]
 
 == Tie allocation
@@ -154,21 +163,42 @@ Analysis of the Telegram network from the Pushshift dataset @BaumgartnerPushshif
 
 == Inter-event times
 
-#image("figs/event_sequence_ex.png", width: 60%)
+#grid(
+  columns: (1fr, 2fr),
+  rows: (1fr, 2fr),
+  align: horizon,
+  [For all channels, get times between two forwarded messages = _inter-event times_ $tau$],
+  figure(image("figs/event_sequence_ex.png", width: 90%)),
+// )
 
-#figure(image("figs/tau_distrib_3fits.svg"))
+// #grid(
+  // columns: (1fr, 1.5fr),
+  [#implies() $f(tau)$ is piecewise power-law, with two main regimes separated by $tau=1 "day"$],
+  figure(image("figs/tau_distrib_3fits.svg", height: 90%)),
+)
 
 
 == Burstiness
 
-
+Investigate shape of distribution of _burst train sizes_ $E$ @KarsaiUniversalFeatures2012:
 
 #figure(image("figs/trainsss.svg", height: 20%))
 
 
 #grid(
-  columns: (1fr, 1fr),
-  [lol], image("figs/burst_train_log_binn.png"),
+  columns: (1fr, 1.5fr),
+  grid.cell(
+    align: horizon,
+    [
+      We do have
+
+      $ p(E) ~ E^(-beta) $
+
+      #implies() forwarding is bursty
+
+    ],
+  ),
+  image("figs/burst_train_log_binn.png", height: 51%),
 )
 
 
@@ -187,12 +217,20 @@ Existing model to reproduce clustering, strength distribution, assortativity and
 == Time
 
 // == Memory
+#grid(
+  columns: (1fr, 4fr),
+  align: horizon,
+  [
+    With already $n$ events in a burst train, probability $p(n)$ to generate another within the same train?
+  ],
+  figure(image("figs/memo_func_cropped.png", height: 55%)),
+)
 
-Train size distribution generated from memory process @KarsaiUniversalFeatures2012
+
+#fa-arrow-right() Train size distribution generated from memory process @KarsaiUniversalFeatures2012
 
 $ p(E) ~ E^(-beta) <=> p(n) = ( n / (n+1) )^nu #h(2em) "with" nu approx beta - 1 $
 
-#figure(image("figs/memo_func_cropped.png", height: 60%))
 
 ---
 
