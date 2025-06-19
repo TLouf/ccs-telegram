@@ -75,7 +75,7 @@ so...
 
 Not exactly!
 
-- Its structure is based on channels \
+- Its *structure is based on channels* \
 #pause
 // #fa-arrow-right()
 #h(1em) #implies() information is more containerised \
@@ -126,6 +126,19 @@ Not exactly!
 
 
 #figure(image("figs/strucure.png", height: 60%))
+
+
+== Strength distributions
+
+Do we have the usual rich club?
+
+#figure(image("figs/strength_2.png", height: 70%))
+
+== Clustering
+
+Tendency to forward from friends of my friends?
+
+#figure(image("figs/cluster.png", height: 70%))
 
 
 == Assortativity
@@ -207,18 +220,22 @@ Investigate shape of distribution of _burst train sizes_ $E$ @KarsaiUniversalFea
 
 = Modelling
 
-Simple-enough model that can reproduce these properties?
+So this temporal network features:
+- clustering
+- power-law in/out-strength distributions
+- language assortativity
+- tendency to reinforce existing ties
+- burstiness
+Simple-enough model that can reproduce these properties? _No!_
 
-#implies() can simulate contagion model or equivalent and test effect of interventions on synthetic networks
-
-Existing model to reproduce clustering, strength distribution, assortativity and burstiness? #emph()[#text(fill: primary)[No!]]
+#implies() Could help simulate contagion model or equivalent and test effect of interventions on synthetic networks
 
 
 == Time
 
 // == Memory
 #grid(
-  columns: (1fr, 4fr),
+  columns: (1.2fr, 3fr),
   align: horizon,
   [
     With already $n$ events in a burst train, probability $p(n)$ to generate another within the same train?
@@ -234,6 +251,8 @@ $ p(E) ~ E^(-beta) <=> p(n) = ( n / (n+1) )^nu #h(2em) "with" nu approx beta - 1
 
 ---
 
+Generalisation from @KarsaiUniversalFeatures2012
+
 #only("1")[#figure(image("figs/time_model.svg"))]
 
 #only("2")[#figure(image("figs/time_model_regimes_focus.svg"))]
@@ -242,14 +261,24 @@ $ p(E) ~ E^(-beta) <=> p(n) = ( n / (n+1) )^nu #h(2em) "with" nu approx beta - 1
 
 #only("4-")[#figure(image("figs/time_model.svg"))]
 
-
+// say nu is for free
 
 
 == Topology
 
-#figure(image("figs/top_model.svg"))
+Adapted from @LaurentCallsCommunities2015
 
+#figure(image("figs/top_model.svg", height: 75%))
 
+// say which parameters we get for free (all except p_TC, which anyway is just slightly lower than actual value of clustering)
+
+== Results
+
+Fitted time model ($pi$, $mu_(A_("1/2"))$, $mu_B$, $k$) to reproduce piecewise power-law $p(tau)$// using bayesian optimization with gaussian processes
+
+// #figure(image("figs/rescale_tau_groups.png", height: 60%))
+
+(+ it runs fast $~10s$)
 
 
 = Final remarks
@@ -273,7 +302,6 @@ $ p(E) ~ E^(-beta) <=> p(n) = ( n / (n+1) )^nu #h(2em) "with" nu approx beta - 1
   #v(1fr)
 ]
 
-== hmmmm
 
 #focus-slide()[
   #v(1fr)
