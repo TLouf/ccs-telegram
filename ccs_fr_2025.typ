@@ -50,22 +50,14 @@ so...
 
 #pause
 
-#figure(
-  grid(
-    columns: 5,
-    rows: 1,
-    gutter: 16pt,
-    grid.cell(
-      colspan: 2,
-      image("figs/Telegram_logo.svg", height: 23%),
-    ),
-    grid.cell(colspan: 1, align: horizon, text(size: 48pt)[$eq.quest$]),
-    grid.cell(
-      colspan: 2,
-      image("figs/Logo_of_Twitter.svg", height: 23%),
-    )
-  ),
-)
+#figure(grid(
+  columns: 5,
+  rows: 1,
+  gutter: 16pt,
+  grid.cell(colspan: 2, image("figs/Telegram_logo.svg", height: 23%)),
+  grid.cell(colspan: 1, align: horizon, text(size: 48pt)[$eq.quest$]),
+  grid.cell(colspan: 2, image("figs/Logo_of_Twitter.svg", height: 23%)),
+))
 // #pause
 // - Is _largely unregulated_
 // #pause
@@ -182,9 +174,9 @@ Tendency to forward from friends of my friends?
   align: horizon,
   [For all channels, get times between two forwarded messages = _inter-event times_ $tau$],
   figure(image("figs/event_sequence_ex.png", width: 90%)),
-// )
+  // )
 
-// #grid(
+  // #grid(
   // columns: (1fr, 1.5fr),
   [#implies() $f(tau)$ is piecewise power-law, with two main regimes separated by $tau=1 "day"$],
   figure(image("figs/tau_distrib_3fits.svg", height: 90%)),
@@ -200,17 +192,14 @@ Investigate shape of distribution of _burst train sizes_ $E$ @KarsaiUniversalFea
 
 #grid(
   columns: (1fr, 1.5fr),
-  grid.cell(
-    align: horizon,
-    [
-      We do have
+  grid.cell(align: horizon, [
+    We do have
 
-      $ p(E) ~ E^(-beta) $
+    $ p(E) ~ E^(-beta) $
 
-      #implies() forwarding is bursty
+    #implies() forwarding is bursty
 
-    ],
-  ),
+  ]),
   image("figs/burst_train_log_binn.png", height: 51%),
 )
 
@@ -274,11 +263,50 @@ Adapted from @LaurentCallsCommunities2015
 
 == Results
 
-Fitted time model ($pi$, $mu_(A_("1/2"))$, $mu_B$, $k$) to reproduce piecewise power-law $p(tau)$// using bayesian optimization with gaussian processes
+Fitted time model ($pi$, $mu_(A_("1/2"))$, $mu_B$, $k$) to reproduce piecewise power-law $p(tau)$
 
+#figure(image("figs/sim_taus.svg", height: 60%))
 // #figure(image("figs/rescale_tau_groups.png", height: 60%))
 
-(+ it runs fast $~10s$)
+#implies() _It fits_ (+ it runs fast: $~10s$) ($pi approx 0.20, mu_(A_1) approx 0.019, mu_(A_2) approx 0.74, mu_B approx 4.8, k = 81$)
+
+
+---
+
+Can generate synthetic networks by creating event sequence for each node, and then pick who they forward using topology model.
+
+_Issue_: no guarantee average event rate for nodes is conserved.
+
+#pause
+
+#grid(
+  columns: (1.5fr, 2fr),
+  // align: horizon,
+  [
+    #fa-arrow-right() What if we just contract/dilate time to fit event rates?
+
+    #only("3-")[#implies() slight deformation of $p(tau)$]
+
+    #only("4-")[#implies() very similar $beta$ in $p(E) ~ E^(-beta)$]
+  ],
+  [
+    #only("3")[#figure(image("figs/rescaled_sim_taus.svg", height: 60%))]
+
+    #only("4")[#figure(image("figs/rescaled_sim_burst_train_sizes.svg", height: 60%))]
+  ],
+)
+
+
+// #pause
+
+// #grid(
+//   columns: (1.5fr, 2fr),
+//   align: horizon,
+
+//   [#fa-arrow-right() What if we just contract/dilate time to fit event rates?],
+
+//   figure(image("figs/rescaled_sim_taus.svg", height: 60%)),
+// )
 
 
 = Final remarks
