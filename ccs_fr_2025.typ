@@ -21,8 +21,13 @@
     date: datetime(year: 2025, month: 6, day: 25).display("[month repr:long] [day padding:none], [year]"),
     // institution: {image("figs/FBK_logo.svg", height: 25%)},
     logo: {
-      box(image("figs/logo_unitn_maths.png", height: 15%))
-      box(image("figs/FBK_logo.svg", height: 25%), inset: (x: 24pt))
+      only("1")[
+        #box(image("figs/logo_unitn_maths.png", height: 15%))
+        #box(image("figs/FBK_logo.svg", height: 25%), inset: (x: 24pt))
+      ]
+      only("2")[
+        #box(image("figs/round_aurora.png", height: 40%), inset: (x: 100pt))
+      ]
     },
   ),
 )
