@@ -83,11 +83,8 @@ Not exactly!
 
 #grid(
   columns: (1fr, 1fr),
-  [- Largely *unregulated*], only("4")[#image("figs/durov_arrest.jpg", height: 40%)],
+  [- Largely *unregulated*], only("4")[#image("figs/durov_arrest.jpg", height: 30%)],
 )
-// - Largely *unregulated*
-
-// #only("4")[#image("figs/durov_arrest.jpg", height: 40%)]
 
 #pause
 
@@ -116,14 +113,15 @@ Not exactly!
 
 = Structural analysis
 
-== A network of information flow
+== A forwarding network
 
 - Nodes: #num(29609) channels
 - Edge from B to A when A forwards a message from B #fa-arrow-right() #num(501897) directed edges
 
 
-#figure(image("figs/strucure.png", height: 60%))
+#figure(image("figs/strucure.png", height: 55%))
 
+#fa-arrow-right() Network of information flow
 
 == Strength distributions
 
@@ -212,17 +210,41 @@ Investigate shape of distribution of _burst train sizes_ $E$ @KarsaiUniversalFea
 
 
 
-= Modelling
+= Modeling
 
-So this temporal network features:
-- clustering
-- power-law in/out-strength distributions
-- language assortativity
-- tendency to reinforce existing ties
-- burstiness
-Simple-enough model that can reproduce these properties? _No!_
+== Mechanisms at play
+
+
+#v(1fr)
+
+#grid(
+  columns: (1.5fr, 1fr),
+  gutter: 2em,
+  [
+    #text(tertiary, size: 30pt)[Topology]
+
+    - clustering
+    - power-law in/out-strength distributions
+    - language assortativity
+    - tendency to reinforce existing ties
+  ],
+  [
+    #text(primary, size: 30pt)[Time]
+
+    - two regimes
+    - burstiness
+  ],
+)
+
+#pause
+
+#v(1fr)
+
+Simple-enough model that can reproduce these features?
 
 #implies() Could help simulate contagion model or equivalent and test effect of interventions on synthetic networks
+
+#v(1fr)
 
 
 == Time
@@ -280,6 +302,8 @@ Fitted time model ($pi$, $mu_(A_("1/2"))$, $mu_B$, $k$) to reproduce piecewise p
 
 Can generate synthetic networks by creating event sequence for each node, and then pick who they forward using topology model.
 
+#pause
+
 _Issue_: no guarantee average event rate for nodes is conserved.
 
 #pause
@@ -330,6 +354,7 @@ _Issue_: no guarantee average event rate for nodes is conserved.
     // What this leads to...
     - Model information propagation and effect of interventions
     - Very global view of temporal process: what about local coordination?
+    and much more!
   ]
 
   #v(1fr)
