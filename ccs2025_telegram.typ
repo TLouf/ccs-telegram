@@ -1,5 +1,5 @@
 #import "pretty-metro.typ": *
-#import "@preview/zero:0.3.3": *
+#import "@preview/zero:0.3.3": num
 
 #set strong(delta: 100)
 // #set par(justify: true)
@@ -18,7 +18,7 @@
     // subtitle: [Subtitle],
     author: [#underline[Thomas Louf], Aurora Vindimian, Riccardo Gallotti],
     // date: datetime.today().display("[month repr:long] [day padding:none], [year]"),
-    date: datetime(year: 2025, month: 6, day: 25).display("[month repr:long] [day padding:none], [year]"),
+    date: datetime(year: 2025, month: 9, day: 2).display("[month repr:long] [day padding:none], [year]"),
     // institution: {image("figs/FBK_logo.svg", height: 25%)},
     logo: {
       only("1")[
@@ -125,7 +125,7 @@ Not exactly!
 
 == Strength distributions
 
-Do we have the usual rich club?
+Do we have the usual Pareto law?
 
 #figure(image("figs/strength_2.png", height: 70%))
 
@@ -217,9 +217,9 @@ Investigate shape of distribution of _burst train sizes_ $E$ @KarsaiUniversalFea
 
 #v(1fr)
 
-#grid(
+#table(
   columns: (1.5fr, 1fr),
-  gutter: 2em,
+  stroke: none,
   [
     #text(tertiary, size: 30pt)[Topology]
 
