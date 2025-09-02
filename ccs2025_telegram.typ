@@ -370,7 +370,7 @@ _Issue_: no guarantee average event rate for nodes is conserved.
 
   #fa-bluesky() #link("https://bsky.app/profile/tlouf.bsky.social")[\@TLouf] \
   #fa-github() #link("https://github.com/TLouf")[\@TLouf] \
-  #fa-icon("envelope", solid: true) #link("mailto:tlouf\@fbk.eu")[tlouf\@fbk.eu] \
+  #fa-icon("envelope", solid: true) #link("mailto:tlouf\@math.uc3m.es")[tlouf\@math.uc3m.es] \
 ]
 
 
